@@ -1,7 +1,9 @@
 package application;
 
 import entities.Employee;
+import services.PensionService;
 import services.SalaryService;
+import services.TaxService;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -21,9 +23,9 @@ public class Api {
 
         //double netSalary = grossSalary * 0.8;
         Employee emp = new Employee(name, age, grossSalary);
-        SalaryService salaryService = new SalaryService();
+        SalaryService salaryService = new SalaryService(new TaxService(), new PensionService());
 
-        System.out.printf("Employee name: %s, age: %d, Net salary U$: %.2f%n",emp.getName(), emp.getAge(), salaryService.netSalary(emp));
+        System.out.printf("Employee name: %s, age: %d, Net salary: U$ %.2f%n",emp.getName(), emp.getAge(), salaryService.netSalary(emp));
         input.close();
     }
 
