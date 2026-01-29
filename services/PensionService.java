@@ -2,8 +2,8 @@ package services;
 
 public class PensionService {
 
-    private double publicPension=0.06;
-    private double privatePension=0.03;
+    protected double publicPension=0.06;
+    protected double privatePension=0.03;
 
     public double getPublicPension() {
         return publicPension;

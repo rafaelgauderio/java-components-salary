@@ -1,9 +1,7 @@
 package application;
 
 import entities.Employee;
-import services.PensionService;
-import services.SalaryService;
-import services.TaxService;
+import services.*;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -27,6 +25,10 @@ public class Api {
 
         System.out.printf("Employee name: %s, age: %d, Net salary: U$ %.2f%n",emp.getName(), emp.getAge(), salaryService.netSalary(emp));
         input.close();
+
+        SalaryService brazilianSalaryService = new SalaryService(new BrazilianTaxService(), new BrazilianPensionService());
+        Employee brazilianEmp = new Employee("Claudia", 23, 10000);
+        System.out.printf("Employee name: %s, age: %d, Net salary: U$ %.2f%n",brazilianEmp.getName(), brazilianEmp.getAge(), brazilianSalaryService.netSalary(brazilianEmp));
     }
 
 }
